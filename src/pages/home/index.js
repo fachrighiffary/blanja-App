@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import Carousell from '../../components/body/Carousell';
-import Category from '../../components/body/Category';
-import New from '../../components/body/New';
-import Popular from '../../components/body/Popular';
+import Carousell from '../../components/body/carousell';
+import Category from '../../components/body/category';
+import New from '../../components/body/new/index.js';
+import Popular from '../../components/body/populer';
 import Navbar from '../../components/navbar';
-
 
 
 
