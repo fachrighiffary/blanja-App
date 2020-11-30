@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
 import Carousell from '../../components/body/carousell';
 import Category from '../../components/body/category';
-import New from '../../components/body/new/index.js';
-import Popular from '../../components/body/populer';
+import Product from '../../components/body/product/index.js';
 import Navbar from '../../components/navbar';
 
 
 
 class Home extends Component {
     render() {
+        const {match, location, history} = this.props;
+        console.log(match, location, history)
         return(
             <>
                 <Navbar />
                 <Carousell />
                 <Category />
-                <New />
-                <Popular />
+                <Product title='New' url="" />
+                <Product title='Popular' url="popular"/>
             </>
         )
     }

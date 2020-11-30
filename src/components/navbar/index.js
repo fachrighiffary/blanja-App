@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Sort, Logo, Search, Chart } from '../../assets';
 import './home.css'
 import '../../pages/style.css'
+import { Link } from 'react-router-dom';
 
 
 class Navbar extends Component {
@@ -20,15 +21,19 @@ class Navbar extends Component {
                                 <img src={Search} alt="" />
                             </div>
                             <div>
-                                <button className="btn btn-outline-dark mt-2 ml-1">
-                                    <img src={Sort}  alt="" />
-                                </button>
+                                <Link >
+                                    <button className="btn btn-outline-dark mt-2 ml-1">
+                                        <img src={Sort}  alt="" />
+                                    </button>
+                                </Link>
                             </div>
                         </div>
                         <div className="col-lg-4 red mt-3 d-flex justify-content-end">
-                            <button className="btn btn-default mr-2">
-                                <img  src={Chart} alt="" />
-                            </button>
+                            <Link to="/mybag">
+                                <button className="btn btn-default mr-2">
+                                    <img  src={Chart} alt="" />
+                                </button>
+                            </Link>
                             <button className="btn btn-danger pl-4 pr-4 mr-3 rounded-pill">Login</button>
                             <button className="btn btn-danger pl-4 pr-4 rounded-pill bg">Sign up</button>
                         </div>

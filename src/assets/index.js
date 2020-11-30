@@ -18,7 +18,12 @@ import Shoes from './category/shoes.png'
 //product
 import Jazz from './category/jazz.png'
 import Star from './icon/Star.png'
+import BigStar from './icon/hugeStar.png'
 
+//baju
+import Baju from './tshirts/baju1.jpg'
+import Baju2 from './tshirts/baju2.jpg'
+import Baju3 from './tshirts/baju3.jpg'
 
 
 export {
@@ -33,5 +38,9 @@ export {
     Pants,
     Shoes,
     Jazz, 
-    Star
+    Star,
+    Baju,
+    Baju2,
+    Baju3,
+    BigStar,
 }
