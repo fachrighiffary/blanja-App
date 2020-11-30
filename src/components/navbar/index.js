@@ -34,7 +34,9 @@ class Navbar extends Component {
                                     <img  src={Chart} alt="" />
                                 </button>
                             </Link>
-                            <button className="btn btn-danger pl-4 pr-4 mr-3 rounded-pill">Login</button>
+                            <Link className="text-decoration-none" to="/profile/addproduct">
+                                <button className="btn btn-danger pl-4 pr-4 mr-3 rounded-pill">Login</button>
+                            </Link>
                             <button className="btn btn-danger pl-4 pr-4 rounded-pill bg">Sign up</button>
                         </div>
                     </div>

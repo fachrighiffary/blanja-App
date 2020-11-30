@@ -5,6 +5,8 @@ import Home from './home';
 import Detail from './detail'
 import MyBag from './myBag';
 import CheckOut from './checkOut';
+import Profile from './profile';
+import Category from './category';
 
 export default function Router() {
     return(
@@ -13,6 +15,8 @@ export default function Router() {
             <Route path="/detail/:id" exact component={Detail}/>
             <Route path="/mybag" exact component={MyBag}/>
             <Route path="/checkout" exact component={CheckOut}/>
+            <Route path="/profile/addproduct" exact component={Profile}/>
+            <Route path="/category" exact component={Category}/>
         </BrowserRouter>
     )
 }

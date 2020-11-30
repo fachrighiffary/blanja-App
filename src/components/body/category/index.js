@@ -7,13 +7,15 @@ import { Jacket, Pants, Shoes, Short, Tshirt } from '../../../assets';
 class Category extends Component{
 
     render(){
+        const {match} = this.props
+        console.log(match)
         return(
             <div className="container mt-5">
                 <h1>Category</h1>
                 <small className="text-muted">What are you currently looking for</small>
 
                 <div className="row d-flex justify-content-center">
-                    <Link href="" className="col-lg col-md col-sm col ml-0 mr-3 d-flex justify-content-center align-items-center" id="tshrit">
+                    <Link href="" className="col-lg col-md col-sm col ml-0 mr-3 d-flex justify-content-center align-items-center" id="tshrit" to='/category'>
                         <div className="position-relative">
                             <img src={Tshirt} height="146px" width="116px" alt="" />
                         </div>

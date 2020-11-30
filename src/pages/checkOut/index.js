@@ -37,7 +37,7 @@ class CheckOut extends Component {
                                         <input type="checkbox" className="cek" />
                                     </div>
                                     <div className="img-chart">
-                                        <img style={{height: '70px'}} src={Jazz} />
+                                        <img style={{height: '70px'}} src={Jazz} alt="" />
                                     </div>
                                     <div className="ml-3">
                                         <p className="name-prodct">Men's formal suit - Black</p>
