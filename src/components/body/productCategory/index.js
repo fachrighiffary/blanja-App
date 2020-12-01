@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import Rating from '../../moleculs/rating';
 
 
-const getUrl = 'http://localhost:8000/search/category?c=T-shirt';
+const getUrl = 'http://localhost:8000/search/category';
 
 
 class ProductCategory extends Component {
@@ -15,9 +15,9 @@ class ProductCategory extends Component {
     };
 
     getAllProducts = () => {
-        // const category = this.props.category
+        const ctgQuery = this.props.ctg
         axios
-        .get(getUrl)
+        .get(getUrl + ctgQuery)
         .then(({data}) => {
             this.setState({
                 products: data
@@ -32,15 +32,13 @@ class ProductCategory extends Component {
         this.getAllProducts();
     }
 
-
     render() {
         const category = this.props
         console.log(category)
-
         const {products} = this.state;
-        //console.log(products)
-        const {match, location, history } = this.props
-        console.log(match, location, history)
+
+        console.log(this.props.ctg)
+           
         return (
             <div className="container cntainer">
                 <h1>{this.props.title}</h1>
@@ -54,7 +52,7 @@ class ProductCategory extends Component {
                                         <div id="header">
                                             <img src={Jazz} className="card-img-top" id="card-img" alt="" />
                                         </div>
-                                        <Link className="card-btn" to={{pathname: "/detail/" + id}} >
+                                        <Link className="card-btn"  to={{pathname: "/detail/" + id}} >
                                             <div className="card-body pl-2 pr-2 card-bdy">
                                                 <p className="card-text merk" >{product_name}</p>
                                                 <p className="card-text price">Rp. {product_price} </p>

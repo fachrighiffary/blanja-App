@@ -4,10 +4,12 @@ import Navbar from '../../components/navbar'
 
 export class Category extends Component {
     render() {
+        const {location} = this.props;
+        console.log(location.search)
         return (
             <>
                 <Navbar />
-                <ProductCategory match title='Category'/>
+                <ProductCategory match title='Category' ctg={location.search}/>
             </>
         )
     }
