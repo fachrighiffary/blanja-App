@@ -7,16 +7,24 @@ import MyBag from './myBag';
 import CheckOut from './checkOut';
 import Profile from './profile';
 import Category from './category';
+import Login from './login';
+import Reset from './reset';
+import Confrim from './confirm';
+import Register from './register';
 
 export default function Router() {
     return(
         <BrowserRouter>
+            <Route path="/login" exact component={Login}  />
+            <Route path="/reset" exact component={Reset}  />
+            <Route path="/confirm" exact component={Confrim}  />
+            <Route path="/register" exact component={Register}  />
             <Route path="/" exact component={Home}  />
-            <Route path="/detail/:id" exact component={Detail}/>
-            <Route path="/mybag" exact component={MyBag}/>
-            <Route path="/checkout" exact component={CheckOut}/>
-            <Route path="/profile/addproduct" exact component={Profile}/>
-            <Route path="/category" exact component={Category}/>
+            <Route path="/detail/:id"  component={Detail}/>
+            <Route path="/mybag"  component={MyBag}/>
+            <Route path="/checkout"  component={CheckOut}/>
+            <Route path="/profile" component={Profile}/>
+            <Route path="/category"  component={Category}/>
         </BrowserRouter>
     )
 }

@@ -14,7 +14,7 @@ class Home extends Component {
             <>
                 <Navbar />
                 <Carousell />
-                <Category/>
+                <Category />
                 <Product title='New' url="" />
                 <Product title='Popular' url="popular"/>
             </>

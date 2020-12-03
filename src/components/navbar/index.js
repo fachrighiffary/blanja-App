@@ -11,10 +11,12 @@ class Navbar extends Component {
             <header className="sticky-top">
                 <nav className="navbar shadow p-3 mb-5 bg-white rounded">
                     <div className="container">
+                    <Link to='/' className="text-decoration-none">
                         <div className="col-lg-2 d-flex">
                             <img src={Logo} alt="" />
                             <span className="txt ml-4">Blanja</span>
                         </div>
+                    </Link>
                         <div className="col-lg-6 d-flex">
                             <div className="search">
                                 <input className="inpt" type="text"placeholder="Search" />
@@ -34,10 +36,12 @@ class Navbar extends Component {
                                     <img  src={Chart} alt="" />
                                 </button>
                             </Link>
-                            <Link className="text-decoration-none" to="/profile/addproduct">
+                            <Link className="text-decoration-none" to="/profile">
                                 <button className="btn btn-danger pl-4 pr-4 mr-3 rounded-pill">Login</button>
                             </Link>
-                            <button className="btn btn-danger pl-4 pr-4 rounded-pill bg">Sign up</button>
+                            <Link className="text-decoration-none" to="/login">
+                                <button className="btn btn-danger pl-4 pr-4 rounded-pill bg">Sign up</button>
+                            </Link>
                         </div>
                     </div>
                 </nav>

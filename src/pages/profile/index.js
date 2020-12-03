@@ -1,102 +1,62 @@
-import Axios from 'axios'
 import React, { Component } from 'react'
-import { Button, Form } from 'react-bootstrap'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import Sidebar from '../../components/body/sidebar'
 import Navbar from '../../components/navbar'
+import MyProduct from '../product/myProduct'
+import AddProduct from '../product/myProduct/addProduct'
+import EditProduct from '../product/myProduct/editProduct'
+import './profil.css'
+import ProfileData from './profileData.js'
 
-const baseUrl = 'http://localhost:8000/products'
+
 
 export class Profile extends Component {
-    // constructor(){
-    //     super()
-    //     this.state = {
-    //         category_id:'',
-    //         store_id:'',
-    //         product_name:'',
-    //         product_price:'',
-    //         product_qty:'',
-    //         product_rating:'',
-    //         product_img:'none',
-    //         product_desc:'',
-    //         product_color:'',
-    //         product_condition:''
-    //     }
 
-    // }
-    state={
-        category_id:'',
-        store_id:'',
-        product_name:'',
-        product_price:'',
-        product_qty:'',
-        product_rating:'',
-        product_img:'none',
-        product_desc:'',
-        product_color:'',
-        product_condition:''
+    
+
+    componentDidMount = () => {
+       console.log('didmout')
     }
-    handlerChange = (e) => {
-        this.setState({ [e.target.name] : e.target.value})
-    }
-    handlerSubmit = async (event) => {
-        event.preventDefault()
-        await Axios.post(baseUrl, this.state)
-        alert('Data Berhasil ditambahkan')
-        this.props.history.push('/')
+
+    componentDidUpdate = (prevProps, prevState) => {
+       if(prevProps.location.key !== this.props.location.key){
+            window.location.reload()
+       }
     }
 
     render() {
-        console.log(this.state)
-        return (
+        const {match} = this.props
+        console.log("isi dari matchnya : ",match)
+       return (
             <>
                 <Navbar />
-                <div className="container">
-                    <h1>Halaman profile seller</h1>
-                    <h2>Tambah product baru</h2>
-                    <form className="col-lg-6" onSubmit={this.handlerSubmit}>
-                    <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Name product</Form.Label>
-                        <Form.Control  type="text" name="product_name" placeholder="Name product" onChange={this.handlerChange} />
-                    </Form.Group>
-                    <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Category</Form.Label>
-                        <Form.Control type="text"  name="category_id" placeholder="Category" onChange={this.handlerChange} />
-                    </Form.Group>
-                    <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Store</Form.Label>
-                        <Form.Control type="number"  name="store_id" placeholder="Store"  onChange={this.handlerChange}  />
-                    </Form.Group>
-                    <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Product Price</Form.Label>
-                        <Form.Control type="number" name="product_price" placeholder="Product Price"  onChange={this.handlerChange}  />
-                    </Form.Group>
-                    <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Product Rating</Form.Label>
-                        <Form.Control type="number" name="product_rating" placeholder="Product Rating"  onChange={this.handlerChange}  />
-                    </Form.Group>
-                    <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Product Description</Form.Label>
-                        <Form.Control type="text" name="product_desc" placeholder="Product Description"  onChange={this.handlerChange}  />
-                    </Form.Group>
-                    <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Product Size</Form.Label>
-                        <Form.Control type="text" name="product_size" placeholder="Product Size"  onChange={this.handlerChange}  />
-                    </Form.Group>
-                    <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Product Color</Form.Label>
-                        <Form.Control type="text" name="product_color" placeholder="Product Color"  onChange={this.handlerChange} />
-                    </Form.Group>
-                    <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Product Quantity</Form.Label>
-                        <Form.Control type="text" name="product_qty" placeholder="Product Quantity"  onChange={this.handlerChange} />
-                    </Form.Group>
-                    <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Product Condition</Form.Label>
-                        <Form.Control type="text" name="product_condition" placeholder="Product Condition"  onChange={this.handlerChange}  />
-                    </Form.Group>
-                        <Button variant="primary" type="submit">
-                            Submit
-                        </Button>
-                    </form>
+                <div className="d-flex ">
+                <Sidebar className="" />
+                    <div className="right-profile">
+                        <div className="container">
+                            <BrowserRouter>
+                                <Switch>
+                                    <Route path="/profile/myproduct/">
+                                        {({ match, history }) => <MyProduct match={match} history={history} />}
+                                    </Route>
+
+                                    <Route path="/profile/addProduct">
+                                    {({ match, history }) => <AddProduct match={match} history={history} />}
+                                        {/* <AddProduct addprodct={this.props} /> */}
+                                    </Route>
+
+                                    <Route path="/profile/edit/:id">
+                                        {({ match, history }) => <EditProduct match={match} history={history} />}
+                                    </Route>
+                        
+                                    <Route  path="/profile">
+                                        <ProfileData />
+                                    </Route>
+                                </Switch>
+                            </BrowserRouter>
+                            {/* <MyProduct /> */}
+                        </div>
+                    </div>
                 </div>
             </>
             
