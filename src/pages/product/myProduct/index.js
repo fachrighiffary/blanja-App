@@ -78,25 +78,20 @@ class MyProduct extends Component {
                             <th>Product Name</th>
                             <th>Product Price</th>
                             <th>Product Quantity</th>
-                            <th>Input Date </th>
-                            <th>Update Date </th>
                             <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                        {products.data && products.data.map(({product_name,category_name, product_price, store_name,product_size,product_color,product_condition,product_qty,product_desc,input_date, update_date, id}) => {
+                        {products.data && products.data.products.map(({product_name, product_price ,product_qty, id}) => {
                         return (
                             <tr key={id}>
                                 <td>{id}</td>
                                 <td>{product_name}</td>
                                 <td>{product_price}</td>
-                                <td>{product_qty}</td>
-                                <td>{product_size}</td>
-                                <td>{input_date}</td>
-                                <td>{update_date}</td>
+                                <td className="text-center">{product_qty}</td>
                                 <td className='p-2 d-flex'>
                                     <Link to={{pathname: "/profile/edit/" + id}}>
-                                        <Button variant="warning">Edit</Button>
+                                        <Button variant="warning" className="mr-2">Edit</Button>
                                     </Link>
                                     <Button variant="danger" onClick={() => {this.deleteProduct(id)}} >Delete</Button>
                                 </td>

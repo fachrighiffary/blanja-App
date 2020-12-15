@@ -25,7 +25,7 @@ class Login extends Component {
                         </div>
                     </Form>
                     <a className="forgot" href="reset">Forgot password?</a><br></br>
-                    <a className="submit" href="/" type="submit">PRIMARY</a>
+                    <a className="submit" href="/" type="submit">LOGIN</a>
                     <p className="register">Don't have a Tokopedia account? <a href="register">Register</a></p>
                 </div>
         </Container>

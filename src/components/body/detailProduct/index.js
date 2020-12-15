@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import { Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import { Baju, Baju2, Baju3, BigStar, Star } from '../../../assets'
+import { BigStar, Star } from '../../../assets'
 import Rating from '../../moleculs/rating'
 import './detailProduct.css'
 
@@ -18,36 +18,37 @@ class DetailProduct extends Component {
 
     
     render() {
-        const {product_name, product_desc, product_rating, product_price, store_name,product_condition, index} = this.props
+        const {product_name, product_img, product_desc, total_rating, product_price, product_qty, store_name,product_condition, index} = this.props
+        // console.log(product_qty)
         return (
             <>
             <Row className="d-flex" key={index}>
                 <div>
                     <div className="img">
-                        <img  className="img-fit"  width="378px"  src={Baju}/>
+                        <img  className="img-fit"  width="378px"  src={'http://localhost:8000' + product_img.split(',')[0]}/>
                     </div>
                     <div className="d-flex justify-content-between mt-2">
                         <div className="dtl-img">
-                            <img className="img-dtl" src={Baju} />
+                            <img className="img-dtl" src={'http://localhost:8000' + product_img.split(',')[0]} />
                         </div>
                         <div className="dtl-img">
-                            <img className="img-dtl" src={Baju3} /> 
+                            <img className="img-dtl" src={'http://localhost:8000' + product_img.split(',')[1]} /> 
                         </div>
                         <div className="dtl-img">
-                            <img className="img-dtl" src={Baju2} />
+                            <img className="img-dtl" src={'http://localhost:8000' + product_img.split(',')[2]} />
                         </div>
                         <div className="dtl-img">
-                            <img className="img-dtl" src={Baju} /> 
+                            <img className="img-dtl" src={'http://localhost:8000' + product_img.split(',')[3]} /> 
                         </div>
                         <div className="dtl-img">
-                            <img className="img-dtl" src={Baju2} />
+                            <img className="img-dtl" src={'http://localhost:8000' + product_img.split(',')[4]} />
                         </div>
                     </div>
                 </div>
                 <div className="dtl-prdct">
                     <p className="txt-name">{product_name}</p>
                     <p className="txt-brand text-muted">{store_name}</p>
-                    <Rating product_rating={product_rating} />
+                    <Rating total_rating={Math.round(total_rating)} />
                     <p className="txt-brand text-muted mt-2">Price</p>
                     <h2>Rp. {product_price}</h2>
                     <p className="mt-4" style={{fontSize:"16px", fontWeight:"bold"}} >Color</p>
@@ -69,7 +70,11 @@ class DetailProduct extends Component {
                         <div style={{width:'150px'}}>
                             <p style={{fontSize:"16px", fontWeight:'bold'}}>Size</p>
                             <div className="d-flex justify-content-between" style={{height:'36px', width:'150px'}}>
-                                <Link className="text-decoration-none" onClick={() => this.setState({ size: this.state.size - 1 })}>
+                                <Link className="text-decoration-none" onClick={ () => {
+                                    if(this.state.size !== 0) {
+                                        this.setState({ size: this.state.size - 1 })}
+                                    }
+                                }>
                                     <div className="btn-c" style={{backgroundColor:'#D4D4D4'}}>-</div>
                                 </Link>
                                     <p>{this.state.size}</p>
@@ -81,11 +86,19 @@ class DetailProduct extends Component {
                         <div style={{width:'150px', marginLeft:'80px'}}>
                             <p style={{fontSize:"16px", fontWeight:'bold'}}>Jumlah</p>
                             <div className="d-flex justify-content-between" style={{height:'36px', width:'150px'}}>
-                                <Link className="text-decoration-none" onClick={() => this.setState({ qty: this.state.qty - 1 })}>
+                                <Link className="text-decoration-none"  onClick={ () => {
+                                    if(this.state.qty !== 0) {
+                                        this.setState({ qty: this.state.size - 1 })}
+                                    }
+                                }>
                                     <div className="btn-c" style={{backgroundColor:'#D4D4D4'}}>-</div>
                                 </Link>
                                     <p>{this.state.qty}</p>
-                                <Link className="text-decoration-none" onClick={() => this.setState({ qty: this.state.qty + 1 })}>
+                                <Link className="text-decoration-none" onClick={ () => {
+                                    if(this.state.qty !== {product_qty}) {
+                                        this.setState({ qty: this.state.qty + 1 })}
+                                    }
+                                }>
                                     <div className="btn-c" style={{backgroundColor:'#FFFFFF', border:"solid 1px"}}>+</div>
                                 </Link>
                             </div>
@@ -109,7 +122,7 @@ class DetailProduct extends Component {
                 <p className="prdct-revw">Peoduct review</p>
                 <div className="ratee">
                     <div className="ratee-number">
-                        <p className="txt-rating">{product_rating}<p className="per text-muted">/5</p> </p>
+                        <p className="txt-rating">{Math.round(total_rating)}<p className="per text-muted">/5</p> </p>
                         <div className="d-flex d-flex justify-content-center">
                             <img src={BigStar} />
                             <img src={BigStar} />

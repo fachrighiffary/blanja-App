@@ -15,8 +15,9 @@ class Home extends Component {
                 <Navbar />
                 <Carousell />
                 <Category />
-                <Product title='New' url="" />
-                <Product title='Popular' url="popular"/>
+                <Product title='New' url="?new=desc" caption='You’ve never seen it before!' />
+                <Product title='Popular' url="?popular=desc" caption='Find clothes that are trending recently'/>
+                <div className="mt-5"></div>
             </>
         )
     }

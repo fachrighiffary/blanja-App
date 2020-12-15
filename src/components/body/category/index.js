@@ -20,7 +20,7 @@ class Category extends Component{
                     id="tshrit"
                     to={{
                         pathname:'/category',
-                        search: "?c=T-shirt"
+                        search: "?key=T-shirt"
                         }}>
                         <div className="position-relative">
                             <img src={Tshirt} height="146px" width="116px" alt="" />
@@ -31,7 +31,7 @@ class Category extends Component{
                     </Link>
                     <Link href="" className="col-lg col-md col-sm col mr-3 d-flex justify-content-center align-items-center" id="short"  to={{
                         pathname:'/category',
-                        search: "?c=short"
+                        search: "?key=short"
                         }}>
                         <div className="position-relative">
                             <img src={Short} height="146px" width="158px" alt="" />
@@ -42,7 +42,7 @@ class Category extends Component{
                     </Link>
                     <Link href="" className="col-lg col-md col-sm col mr-3 d-flex justify-content-center align-items-center"  id="jacket" to={{
                         pathname:'/category',
-                        search: "?c=jacket"
+                        search: "?key=jacket"
                         }}>
                         <div className="position-relative">
                             <img src={Jacket} height="131px" width="131px" alt="" />
@@ -53,7 +53,7 @@ class Category extends Component{
                     </Link>
                     <Link href="" className="col-lg col-md col-sm col mr-3 d-flex justify-content-center align-items-center" id="pants" to={{
                         pathname:'/category',
-                        search: "?c=pants"
+                        search: "?key=pants"
                         }}>
                         <div className="position-relative">
                             <img src={Pants} height="131px" width="76px" alt=""/>
@@ -64,7 +64,7 @@ class Category extends Component{
                     </Link>
                     <Link href="" className="col-lg col-md col-sm col d-flex justify-content-center align-items-center" id="shoes" to={{
                         pathname:'/category',
-                        search: "?c=shoes"
+                        search: "?key=shoes"
                         }}>
                         <div className="position-relative">
                             <img src={Shoes} height="109px" width="169px" alt="" />

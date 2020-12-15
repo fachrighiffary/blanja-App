@@ -7,10 +7,10 @@ export default class Rating extends Component {
 
     render() {
         
-        const {product_rating} = this.props
-        // console.log(product_rating)
+        const {total_rating} = this.props
+        // console.log(total_rating)
         let a = '';
-        for(let i = 0; i< product_rating; i++){
+        for(let i = 0; i< total_rating; i++){
             a += i
         }
         let lop = a.split('')
@@ -27,7 +27,7 @@ export default class Rating extends Component {
                         return <img src={Star} alt="" />
                     })}
                 </div>
-                <p className="text-muted rate-num" >({product_rating})</p>
+                <p className="text-muted rate-num" >({total_rating})</p>
             </div>
         )
     }

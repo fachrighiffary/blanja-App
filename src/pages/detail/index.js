@@ -35,6 +35,12 @@ class Detail extends Component {
     componentDidMount = () => {
         this.getProduct();
     } 
+
+    componentDidUpdate(prevProps, prevState) {
+        if(prevState !== this.state.product){
+            this.getProduct()
+        }
+   }
     
 
     render() {
@@ -54,21 +60,23 @@ class Detail extends Component {
                             <p className="mr-2">Detail</p>
                         </Link>
                     </div>
-                    {product.data && product.data.map(({product_name, product_desc, product_condition,product_rating , product_price, product_qty, product_size, store_name}, index) => {
+                    {product.data && product.data.map(({product_name, product_img, product_desc, product_condition,total_rating , product_price, product_qty, product_size, store_name}, index) => {
                         return <DetailProduct 
                         product_name={product_name}
+                        product_img={product_img}
                         product_desc={product_desc}
                         product_price={product_price}
                         product_qty={product_qty}
                         product_size={product_size}
                         store_name={store_name}
                         product_condition={product_condition}
-                        product_rating={product_rating}
+                        total_rating={total_rating}
                         key={index}
                         />
                     })}
                 </div>
-                <Product title='Popular' url="popular"/>
+                <Product  title='Popular' url="?new=desc"/>
+                <div className="mt-5"></div>
             </>
         )
     }
