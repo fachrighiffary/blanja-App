@@ -15,8 +15,13 @@ class Detail extends Component {
 
     getProduct = () => {
         const {match} = this.props
+        const config = {
+            headers: {
+              "x-access-token": "Bearer " + localStorage.getItem("token"),
+            },
+          };
         Axios
-        .get(getURL + match.params.id )
+        .get(getURL + match.params.id, config )
         .then(({data}) => {
             this.setState({
                 product: data
@@ -34,17 +39,19 @@ class Detail extends Component {
 
     componentDidMount = () => {
         this.getProduct();
-    } 
+    }
 
-    componentDidUpdate(prevProps, prevState) {
-        if(prevState !== this.state.product){
+    componentDidUpdate = (prevProps) => {
+        if(prevProps.match.params.id !== this.props.match.params.id){
             this.getProduct()
         }
-   }
+    }
     
+    
+       
 
     render() {
-        console.log(this.state.product)
+        //console.log(this.state.product)
         const {product} = this.state
         // console.log('idnya adalah', this.state.id)
         return (
@@ -60,7 +67,7 @@ class Detail extends Component {
                             <p className="mr-2">Detail</p>
                         </Link>
                     </div>
-                    {product.data && product.data.map(({product_name, product_img, product_desc, product_condition,total_rating , product_price, product_qty, product_size, store_name}, index) => {
+                    {product.data && product.data.map(({product_name, product_img, product_desc, product_condition,total_rating , product_price, product_qty, product_size, product_color, store_name}, index) => {
                         return <DetailProduct 
                         product_name={product_name}
                         product_img={product_img}
@@ -68,6 +75,7 @@ class Detail extends Component {
                         product_price={product_price}
                         product_qty={product_qty}
                         product_size={product_size}
+                        product_color={product_color}
                         store_name={store_name}
                         product_condition={product_condition}
                         total_rating={total_rating}
@@ -83,4 +91,4 @@ class Detail extends Component {
 }
 
 
-export default Detail;
+export default  Detail;

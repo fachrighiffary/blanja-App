@@ -11,6 +11,7 @@ class MyProduct extends Component {
     state = {
         no : 1,
         products: {},
+        isLogin: true
     };
 
     getAllProducts = () => {

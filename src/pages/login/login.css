@@ -35,20 +35,20 @@
     text-decoration: none;
   }
   
-  .button-full {
+  .button-shadow {
     text-decoration: none;
     background: #DB3022;
     box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.05);
-    border-radius: 4px 0px 0px 4px;
+    border-radius: 0px 4px 4px 0px;
     color: white;
   }
   
-  .button-shadow {
+  .button-full {
     text-decoration: none;
     border: 1px solid #9B9B9B;
     box-sizing: border-box;
     filter: drop-shadow(0px 1px 8px rgba(0, 0, 0, 0.05));
-    border-radius: 0px 4px 4px 0px;
+    border-radius: 4px 0px 0px 4px;
     color: gray;
   }
   
@@ -149,7 +149,7 @@
     margin-right: 20px;
   }
   
-  .btn-full {
+  .btn-shadow {
     text-decoration: none;
     font-weight: 500;
     font-size: 14px;
@@ -159,11 +159,12 @@
     width: 100px;
   }
   
-  .btn-shadow {
+  .btn-full {
     text-decoration: none;
     font-weight: 500;
     font-size: 14px;
     border: 1px solid #9B9B9B;
+    background: #DB3022;
     box-sizing: border-box;
     border-radius: 24px;
     color: gray;

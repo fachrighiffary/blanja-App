@@ -17,6 +17,7 @@ class EditProduct extends Component {
         product_size: '',
         product_color:'',
         product_condition:'',
+        product_img:[],
         update_date: new Date(Date.now()),
     }
   
@@ -24,8 +25,13 @@ class EditProduct extends Component {
 
     componentDidMount = async () => {
         const idparam = this.props.match.params.id
-        const res = await Axios.get(Url + idparam)
-        const {id, category_id, product_name, product_price, product_qty, product_desc, product_size ,product_color, product_condition } = res.data.data[0]
+        const config = {
+            headers: {
+              "x-access-token": "Bearer " + localStorage.getItem("token"),
+            },
+          };
+        const res = await Axios.get(Url + idparam, config)
+        const {id, category_id, product_img, product_name, product_price, product_qty, product_desc, product_size ,product_color, product_condition } = res.data.data[0]
 
         this.setState({
             id: id,
@@ -37,6 +43,7 @@ class EditProduct extends Component {
             product_size : product_size,
             product_color: product_color,
             product_condition: product_condition,
+            product_img: product_img
         })
     }
 
@@ -58,7 +65,8 @@ class EditProduct extends Component {
         console.log(this.props.history)
         console.log("isi props dari edit product : ",this.props.match.params.id)
         console.log(this.state)
-        const {category_id, product_name, product_price, product_qty, product_desc, product_size, product_color, product_condition } = this.state
+        const {category_id,product_img, product_name, product_price, product_qty, product_desc, product_size, product_color, product_condition } = this.state
+        console.log(product_img)
         return (
             <div className="container p-5">
                 <div className="container bckgr">

@@ -1,3 +1,15 @@
+.dp-profile{
+    height: 40px;
+    width: 40px;
+    overflow: hidden;
+    border-radius: 30px;
+}
+.img-profile{
+    width: 40px;
+    object-position: -50%  50%;
+    border-radius: 30px;
+    margin-right: 10px;
+}
 .search{
     margin-top: 5px; 
     border: 1px solid; 

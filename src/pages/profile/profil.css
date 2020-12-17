@@ -9,3 +9,8 @@
       position: sticky;
       top: 0;
   }
+.field-profile{
+    background-color: white;
+    max-width: 850px;
+    min-height: 636px;
+}

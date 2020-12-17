@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
-import {Provider} from 'react-redux'
+import {Provider} from 'react-redux' 
+// menyediakan nilai2 yang ada di dalam store kedalam komponen yang berada di dalam provider
 
 import Home from './home';
 import Detail from './detail'

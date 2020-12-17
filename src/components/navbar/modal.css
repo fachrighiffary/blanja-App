@@ -1,0 +1,61 @@
+.mdl{
+    width: 450px;
+    height: 758px;
+    justify-content: center;
+}
+.black{
+    width: 36px;
+    height: 36px;
+    background-color: black;
+    border-radius: 18px;
+}
+.white{
+    width: 36px;
+    height: 36px;
+    background-color: white;
+    border-radius: 18px;
+}
+.red{
+    width: 36px;
+    height: 36px;
+    background-color: red;
+    border-radius: 18px;
+}
+.grey{
+    width: 36px;
+    height: 36px;
+    background-color: grey;
+    border-radius: 18px;
+}
+.brown{
+    width: 36px;
+    height: 36px;
+    background-color: brown;
+    border-radius: 18px;
+}
+.blue{
+    width: 36px;
+    height: 36px;
+    background-color: blue;
+    border-radius: 18px;
+}
+.size{
+    width: 40px;
+    border: solid 1px grey;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    margin: 15px;
+}
+.size:hover{
+    background-color: red;
+}
+.ctg{
+    width: 100px;
+    height: 40px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

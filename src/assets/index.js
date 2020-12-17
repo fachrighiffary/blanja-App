@@ -10,6 +10,12 @@ import Edit from './icon/edit.png'
 import Home from './icon/home.png'
 import Product from './icon/product.png'
 import Cart from './icon/cart.png'
+import Mail from './icon/mail.png'
+import Bell from './icon/bell.png'
+import Acount from './profil/account.png'
+import Address from './profil/address.png'
+import Myorder from './profil/myorder.png'
+
 
 //category
 import Tshirt from './category/tshirt.png'
@@ -31,7 +37,7 @@ import Baju3 from './tshirts/baju3.jpg'
 
 
 //profil
-import Profil from './profil/profil.jpg'
+import Profil from './profil/fg.jpg'
 
 
 
@@ -57,5 +63,10 @@ export {
     Profil,
     Home,
     Product,
-    Cart
+    Cart,
+    Bell,
+    Mail,
+    Acount,
+    Address,
+    Myorder
 }

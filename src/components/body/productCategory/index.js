@@ -1,9 +1,8 @@
-import React, { Component } from 'react'
-import { Jazz } from '../../../assets'
-import '../product/new.css'
-import axios from 'axios'
+import axios from 'axios';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Rating from '../../moleculs/rating';
+import '../product/new.css';
 
 
 const getUrl = 'http://localhost:8000/search';

@@ -1,25 +1,41 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { Component } from 'react'
-import { Row } from 'react-bootstrap'
+import { Row, Dropdown } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { BigStar, Star } from '../../../assets'
 import Rating from '../../moleculs/rating'
 import './detailProduct.css'
+
+import {connect} from 'react-redux'
+
+import {
+    addCounterCreator,
+    subCounterCreator
+} from '../../../redux/actionCreators/Counter'
 
 
 class DetailProduct extends Component {
     constructor(props){
         super(props);
         this.state = {
-            size : 0,
-            qty : 0,
+            
+            product_name: this.props.product_name,
+            product_color: this.props.product_color,
+            product_size: this.props.product_size,
+            size : '',
+            color: '',
+            qty : '',
         }
     }
 
     
     render() {
-        const {product_name, product_img, product_desc, total_rating, product_price, product_qty, store_name,product_condition, index} = this.props
+        const {product_name, product_img, product_desc, total_rating, product_price, product_size, product_qty, store_name,product_condition, index} = this.props
+        console.log(this.state)
         // console.log(product_qty)
+        // const {counterNumber} = this.props.counterNumber
+        const { counterNumber} = this.props.counter
+        console.log(this.props.counter)
         return (
             <>
             <Row className="d-flex" key={index}>
@@ -68,8 +84,8 @@ class DetailProduct extends Component {
                     </Row>
                     <div className="d-flex mt-4 justify-content-around" style={{height:'80px', width:'380px'}}>
                         <div style={{width:'150px'}}>
-                            <p style={{fontSize:"16px", fontWeight:'bold'}}>Size</p>
-                            <div className="d-flex justify-content-between" style={{height:'36px', width:'150px'}}>
+                            {/* <p style={{fontSize:"16px", fontWeight:'bold'}}>Size</p> */}
+                            {/* <div className="d-flex justify-content-between" style={{height:'36px', width:'150px'}}>
                                 <Link className="text-decoration-none" onClick={ () => {
                                     if(this.state.size !== 0) {
                                         this.setState({ size: this.state.size - 1 })}
@@ -81,28 +97,47 @@ class DetailProduct extends Component {
                                 <Link className="text-decoration-none" onClick={() => this.setState({ size: this.state.size + 1 })}>
                                     <div className="btn-c" style={{backgroundColor:'#FFFFFF', border:"solid 1px"}}>+</div>
                                 </Link>
-                            </div>
+                            </div> */}
+                            <Dropdown>
+                                <Dropdown.Toggle variant="light" id="dropdown-basic">
+                                   Size
+                                </Dropdown.Toggle>
+
+                                <Dropdown.Menu>
+                                    {product_size.split(",").map((result) =>{
+                                        return <Dropdown.Item onClick={ () => {
+                                            let setSize = this.state.size
+                                            this.setState({size: setSize})
+                                        }} >{result}</Dropdown.Item>
+                                    })}
+                                </Dropdown.Menu>
+                            </Dropdown>
                         </div>
+
+                        {/* menggunakan redux */}
                         <div style={{width:'150px', marginLeft:'80px'}}>
                             <p style={{fontSize:"16px", fontWeight:'bold'}}>Jumlah</p>
                             <div className="d-flex justify-content-between" style={{height:'36px', width:'150px'}}>
                                 <Link className="text-decoration-none"  onClick={ () => {
-                                    if(this.state.qty !== 0) {
-                                        this.setState({ qty: this.state.size - 1 })}
+                                    if(counterNumber !== 0){
+                                        this.props.dispatch(subCounterCreator())
                                     }
-                                }>
+                                }}>
                                     <div className="btn-c" style={{backgroundColor:'#D4D4D4'}}>-</div>
                                 </Link>
-                                    <p>{this.state.qty}</p>
+                                    <p>{counterNumber}</p>
                                 <Link className="text-decoration-none" onClick={ () => {
-                                    if(this.state.qty !== {product_qty}) {
-                                        this.setState({ qty: this.state.qty + 1 })}
+                                    if(counterNumber !== product_qty){
+                                        this.props.dispatch(addCounterCreator())
                                     }
-                                }>
+                                }}>
                                     <div className="btn-c" style={{backgroundColor:'#FFFFFF', border:"solid 1px"}}>+</div>
-                                </Link>
+                                </Link> 
                             </div>
                         </div>
+
+
+
                     </div>
                    <Row className="justify-content-between mt-3">
                         <Link  className="chat text-decoration-none d-flex">Chat</Link>
@@ -170,4 +205,14 @@ class DetailProduct extends Component {
     }
 }
 
-export default DetailProduct
+const mapStateToProps = ({counter}) => {
+    return{
+       counter
+        //key => nama props
+       // value => state apa di store
+    }
+}
+
+const counterWithRedux = connect(mapStateToProps)(DetailProduct)
+
+export default counterWithRedux

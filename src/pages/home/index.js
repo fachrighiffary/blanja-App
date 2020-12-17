@@ -7,9 +7,12 @@ import Navbar from '../../components/navbar';
 
 
 class Home extends Component {
+    state = {
+        isLogin: false,
+      };
     render() {
-        const {match, location, history} = this.props;
-        console.log(match, location, history)
+       //const {match, location, history} = this.props;
+        //console.log(match, location, history)
         return(
             <>
                 <Navbar />
