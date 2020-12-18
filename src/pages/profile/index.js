@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { BrowserRouter, Route, Switch,Redirect } from 'react-router-dom'
 import Sidebar from '../../components/body/sidebar'
 import Navbar from '../../components/navbar'
 import MyProduct from '../product/myProduct'
@@ -25,7 +26,7 @@ export class Profile extends Component {
     }
 
     render() {
-        const {match} = this.props
+        const {match, auth} = this.props
         console.log("isi dari matchnya : ",match)
        return (
             <>
@@ -64,4 +65,12 @@ export class Profile extends Component {
     }
 }
 
-export default Profile
+
+const mapStateToProps = ({ auth }) => {
+    return {
+      auth,
+    };
+  };
+  
+
+export default connect(mapStateToProps)(Profile)

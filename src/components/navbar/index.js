@@ -24,13 +24,13 @@ const Navbar = (props) => {
             console.log(res);
             dispatch({type : "LOGOUT"});
             localStorage.setItem("token", "")
-            localStorage.setItem("isLogin", false)
+            localStorage.setItem("isLogin", 0)
         })
         .catch((err) => {
             console.log(err)
         })
     }
-
+    console.log(props.auth.isLogin)
     return (
         <>
             <header className="sticky-top">
@@ -53,7 +53,7 @@ const Navbar = (props) => {
                                 </button>
                             </div>
                         </div>
-                        {props.auth.isLogin ? (
+                        {props.auth.isLogin  ? (
                             <div className="col-lg-4 mt-3 d-flex justify-content-end">
                             <Link to="/mybag">
                                 <button className="btn btn-default mr-2">

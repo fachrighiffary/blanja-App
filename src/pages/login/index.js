@@ -31,11 +31,10 @@ class Login extends Component {
             localStorage.setItem("level", res.data.data.level)
             localStorage.setItem("token", res.data.data.token)
             res.headers["x-access-token"] = res.data.data.token;
-            localStorage.setItem("isLogin",true)
+            localStorage.setItem("isLogin",1)
             dispatch({type: 'LOGIN'})
             console.log(res.headers)
             console.log(localStorage)
-            
         })
         .catch((err) => {
             console.log(err)
@@ -46,7 +45,7 @@ class Login extends Component {
         const { auth } = this.props;
         return (
             <Container className="auth">
-                 {auth.isLogin && <Redirect to="/" />}
+                 {auth.isLogin  && <Redirect to="/" />}
                 <div className="form-header">
                     <div className="img-container d-flex justify-content-center">
                         <Image src={Logo} alt="Logo" />

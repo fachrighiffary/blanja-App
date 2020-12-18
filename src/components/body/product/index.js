@@ -10,9 +10,9 @@ import './new.css';
 
 class Product extends Component {
     
-
-    getAllProductsDispatch = () => {
-        this.props.dispatch(getAllProductsCreator());
+    url = this.props.url
+    getAllProductsDispatch = (url) => {
+        this.props.dispatch(getAllProductsCreator(url));
     }
 
     componentDidMount = () => {
@@ -22,6 +22,7 @@ class Product extends Component {
 
     render() {
         const {products} = this.props;
+        console.log(this.props.url)
         return (
             <div className="container cntainer">
                 <h1>{this.props.title}</h1>

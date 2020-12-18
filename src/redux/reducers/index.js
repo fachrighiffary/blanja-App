@@ -9,7 +9,7 @@ const reducers = combineReducers({
     //value => fungsi reducer
     counter : CounterReducer,
     products : ProductsReducer,
-    auth: (prevState = { isLogin: localStorage.getItem("isLogin"), level: 1 }, action) => {
+    auth: (prevState = { isLogin: Number(localStorage.getItem("isLogin")), level: 1 }, action) => {
         switch (action.type) {
           case "LOGIN":
             return {
@@ -18,9 +18,10 @@ const reducers = combineReducers({
               level: localStorage.getItem("level")
             };
           case "LOGOUT":
+            console.log(prevState.isLogin)
             return {
               ...prevState,
-              isLogin: false,
+              isLogin: 0,
             };
           default:
             return {

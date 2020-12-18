@@ -1,7 +1,7 @@
 import React from 'react'
 import { Dropdown } from 'react-bootstrap'
 import { connect } from 'react-redux'
-import { Link, useHistory } from 'react-router-dom'
+import { Link, Redirect, useHistory } from 'react-router-dom'
 import { Acount, Address, Cart, Edit, Home, Myorder, Product, Profil } from '../../../assets'
 import './sidebar.css'
 
@@ -26,7 +26,7 @@ const Sidebar = (props) => {
                         </div>
                     </div>
                 </div>
-                <div className="mt-5 ml-5 btnside">
+                {/* <div className="mt-5 ml-5 btnside">
                     <div className='d-flex justify-content-between'>
                         <div className="icon" style={{backgroundColor:"#456BF3"}}>
                             <img alt="" src={Home} />
@@ -68,8 +68,8 @@ const Sidebar = (props) => {
                         </Dropdown>
                     </div>
                     
-                </div>
-                {/* {props.auth.level === 1  ? (
+                </div> */}
+                {props.auth.level === 1  ? (
                     <div className="mt-5 ml-5 btnside">
                     <div className='d-flex justify-content-between'>
                         <div className="icon" style={{backgroundColor:"#456BF3"}}>
@@ -149,7 +149,7 @@ const Sidebar = (props) => {
                     </div>
                     
                 </div>
-                )} */}
+                )}
                 
             </div>
     )
