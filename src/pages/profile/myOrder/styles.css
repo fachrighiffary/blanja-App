@@ -1,0 +1,20 @@
+.cntner{
+    min-height: 636px;
+    background-color: white;
+    width: 100%;
+    padding-top: 30;
+}
+.card-tranc{
+    height: 200px;
+    width: 400px;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 1px;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+}
+.card-tranc:hover{
+    text-decoration: none;
+    color: black;
+}

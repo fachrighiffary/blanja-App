@@ -2,7 +2,7 @@
     background-color: #F5F5F5;
     margin-top: -50px;
     width: 100%;
-    min-height: 535px;
+    min-height: 100vh;
     z-index: 0;
 }
 .make-me-sticky {

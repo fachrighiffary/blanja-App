@@ -23,8 +23,8 @@ export default class Rating extends Component {
                     <img src={Star} alt="" />
                     <img src={Star} alt="" />
                     <img src={Star} alt="" />*/}
-                    {lop.map((data) => {
-                        return <img src={Star} alt="" />
+                    {lop.map((data, index) => {
+                        return <img key={index} src={Star} alt="" />
                     })}
                 </div>
                 <p className="text-muted rate-num" >({total_rating})</p>

@@ -5,7 +5,7 @@ import Rating from '../../moleculs/rating';
 import '../product/new.css';
 
 
-const getUrl = 'http://localhost:8000/search';
+const getUrl = process.env.REACT_APP_BASEURL + '/search';
 
 
 class ProductCategory extends Component {
@@ -49,7 +49,7 @@ class ProductCategory extends Component {
 
                                     <div className="card col-lg-2 col-md-3 col-sm-6 mr-3 ml-3 col-12 shadow bg-white " id="cards" key={id}>
                                         <div id="header">
-                                            <img src={'http://localhost:8000' + product_img.split(',')[0]} className="card-img-top" id="card-img" alt="" />
+                                            <img src={process.env.REACT_APP_BASEURL + product_img.split(',')[0]} className="card-img-top" id="card-img" alt="" />
                                         </div>
                                         <Link className="card-btn"  to={{pathname: "/detail/" + id}} >
                                             <div className="card-body pl-2 pr-2 card-bdy">

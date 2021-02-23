@@ -1,10 +1,11 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { Component } from 'react'
-import { Row, Dropdown } from 'react-bootstrap'
+import { Row, Button,Modal } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { BigStar, Star } from '../../../assets'
 import Rating from '../../moleculs/rating'
 import './detailProduct.css'
+import Select from 'react-select'
 
 import {connect} from 'react-redux'
 
@@ -13,54 +14,72 @@ import {
     subCounterCreator
 } from '../../../redux/actionCreators/Counter'
 
-
 class DetailProduct extends Component {
     constructor(props){
         super(props);
         this.state = {
-            
             product_name: this.props.product_name,
             product_color: this.props.product_color,
             product_size: this.props.product_size,
             size : '',
             color: '',
             qty : '',
+            smShow: false
         }
     }
+    handlerChange = (e) => {
+        this.setState({ [e.target.name] : e.target.value})
+    }
+    handleClick = (result) => {
+       this.setState({
+           color: result
+       })
+    }
 
+    handleSubmit = () => {
+        if(this.state.color === '' && this.state.size === ''){
+            this.setState({
+                smShow: true
+            })
+        }else{
+            alert('oke next')
+        }
+    }
     
     render() {
-        const {product_name, product_img, product_desc, total_rating, product_price, product_size, product_qty, store_name,product_condition, index} = this.props
-        console.log(this.state)
-        // console.log(product_qty)
-        // const {counterNumber} = this.props.counterNumber
+        const {product_name, product_color, product_img, product_desc, total_rating, product_price, product_size, product_qty, store_name,product_condition, index} = this.props
+        const {smShow} = this.state
         const { counterNumber} = this.props.counter
-        console.log(this.props.counter)
+
+        const options = product_size.split(',').map((result) => {
+            return { value: result, label: result.toUpperCase() }
+        })
         return (
             <>
             <Row className="d-flex" key={index}>
                 <div>
                     <div className="img">
-                        <img  className="img-fit"  width="378px"  src={'http://localhost:8000' + product_img.split(',')[0]}/>
+                        <img  className="img-fit"  width="378px"  src={process.env.REACT_APP_BASEURL + product_img.split(',')[0]}/>
                     </div>
                     <div className="d-flex justify-content-between mt-2">
                         <div className="dtl-img">
-                            <img className="img-dtl" src={'http://localhost:8000' + product_img.split(',')[0]} />
+                            <img className="img-dtl" src={process.env.REACT_APP_BASEURL + product_img.split(',')[0]} />
                         </div>
                         <div className="dtl-img">
-                            <img className="img-dtl" src={'http://localhost:8000' + product_img.split(',')[1]} /> 
+                            <img className="img-dtl" src={process.env.REACT_APP_BASEURL + product_img.split(',')[1]} /> 
                         </div>
                         <div className="dtl-img">
-                            <img className="img-dtl" src={'http://localhost:8000' + product_img.split(',')[2]} />
+                            <img className="img-dtl" src={process.env.REACT_APP_BASEURL + product_img.split(',')[2]} />
                         </div>
                         <div className="dtl-img">
-                            <img className="img-dtl" src={'http://localhost:8000' + product_img.split(',')[3]} /> 
+                            <img className="img-dtl" src={process.env.REACT_APP_BASEURL + product_img.split(',')[3]} /> 
                         </div>
                         <div className="dtl-img">
-                            <img className="img-dtl" src={'http://localhost:8000' + product_img.split(',')[4]} />
+                            <img className="img-dtl" src={process.env.REACT_APP_BASEURL + product_img.split(',')[4]} />
                         </div>
                     </div>
                 </div>
+                
                 <div className="dtl-prdct">
                     <p className="txt-name">{product_name}</p>
                     <p className="txt-brand text-muted">{store_name}</p>
@@ -68,50 +87,26 @@ class DetailProduct extends Component {
                     <p className="txt-brand text-muted mt-2">Price</p>
                     <h2>Rp. {product_price}</h2>
                     <p className="mt-4" style={{fontSize:"16px", fontWeight:"bold"}} >Color</p>
-                    <Row className="justify-content-around ml-1" style={{width:'200px'}}>
-                        <Link>
-                            <div className="clr-dtl" style={{backgroundColor:'#1A1A1A'}}></div>
-                        </Link>
-                        <Link>
-                            <div className="clr-dtl" style={{backgroundColor:'#D84242'}}></div>
-                        </Link>
-                        <Link>
-                            <div className="clr-dtl"style={{backgroundColor:'#4290D8'}}></div>
-                        </Link>
-                        <Link>
-                            <div className="clr-dtl" style={{backgroundColor:'#42D86C'}}></div>
-                        </Link>
+                    <Row className="justify-content-start ml-1" style={{width:'400px'}}>
+                        {product_color.split(',').map((result, index) => {
+                            return (
+                                <Button key={index} variant="link" onClick={() => this.handleClick(result)} >
+                                    <div className="clr-dtl" style={{backgroundColor: result}}></div>
+                                </Button>
+                            )
+                        })}
                     </Row>
                     <div className="d-flex mt-4 justify-content-around" style={{height:'80px', width:'380px'}}>
                         <div style={{width:'150px'}}>
-                            {/* <p style={{fontSize:"16px", fontWeight:'bold'}}>Size</p> */}
-                            {/* <div className="d-flex justify-content-between" style={{height:'36px', width:'150px'}}>
-                                <Link className="text-decoration-none" onClick={ () => {
-                                    if(this.state.size !== 0) {
-                                        this.setState({ size: this.state.size - 1 })}
-                                    }
-                                }>
-                                    <div className="btn-c" style={{backgroundColor:'#D4D4D4'}}>-</div>
-                                </Link>
-                                    <p>{this.state.size}</p>
-                                <Link className="text-decoration-none" onClick={() => this.setState({ size: this.state.size + 1 })}>
-                                    <div className="btn-c" style={{backgroundColor:'#FFFFFF', border:"solid 1px"}}>+</div>
-                                </Link>
-                            </div> */}
-                            <Dropdown>
-                                <Dropdown.Toggle variant="light" id="dropdown-basic">
-                                   Size
-                                </Dropdown.Toggle>
-
-                                <Dropdown.Menu>
-                                    {product_size.split(",").map((result) =>{
-                                        return <Dropdown.Item onClick={ () => {
-                                            let setSize = this.state.size
-                                            this.setState({size: setSize})
-                                        }} >{result}</Dropdown.Item>
-                                    })}
-                                </Dropdown.Menu>
-                            </Dropdown>
+                            <p style={{fontSize:"16px", fontWeight:'bold'}}>Size</p>
+                             <Select 
+                             options={options} 
+                             placeholder="Select Size" 
+                             name="size" 
+                             onChange={item => this.setState({
+                                size: item.value
+                            })}
+                             />
                         </div>
 
                         {/* menggunakan redux */}
@@ -135,16 +130,14 @@ class DetailProduct extends Component {
                                 </Link> 
                             </div>
                         </div>
-
-
-
                     </div>
                    <Row className="justify-content-between mt-3">
                         <Link  className="chat text-decoration-none d-flex">Chat</Link>
-                        <Link  className="add-bag text-decoration-none d-flex">Add bag</Link>
+                        <Link  className="add-bag text-decoration-none d-flex" onClick={this.handleSubmit}>Add bag</Link>
                         <Link  className="buy-now text-decoration-none d-flex ">Buy Now</Link>
                    </Row>
                 </div>
+                
             </Row>
             <div>
                 <h2 className="information">Informasi Product</h2>
@@ -200,6 +193,25 @@ class DetailProduct extends Component {
                     </div>
                 </div>
             </div>
+            <Modal
+                size="sm"
+                show={smShow}
+                centered={true}
+                onHide={() => {
+                    this.setState({
+                        smShow : false
+                    })
+                }}
+                aria-labelledby="example-modal-sizes-title-sm"
+            >
+                <Modal.Header closeButton>
+                <Modal.Title id="example-modal-sizes-title-sm">
+                    Warning!
+                </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Choose color and Size first</Modal.Body>
+            </Modal>
+            
             </>
         )
     }
@@ -208,8 +220,6 @@ class DetailProduct extends Component {
 const mapStateToProps = ({counter}) => {
     return{
        counter
-        //key => nama props
-       // value => state apa di store
     }
 }
 

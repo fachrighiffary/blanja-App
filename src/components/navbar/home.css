@@ -82,4 +82,11 @@
 #card-img{
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
-}
+} 
+@media only screen and (max-width: 770px) {
+    .navbar-cus {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+  }

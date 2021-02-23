@@ -1,0 +1,34 @@
+{
+  "files": {
+    "main.css": "/static/css/main.fb02f134.chunk.css",
+    "main.js": "/static/js/main.fe1e5602.chunk.js",
+    "main.js.map": "/static/js/main.fe1e5602.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.f41d41e9.js",
+    "runtime-main.js.map": "/static/js/runtime-main.f41d41e9.js.map",
+    "static/css/2.1a02f21c.chunk.css": "/static/css/2.1a02f21c.chunk.css",
+    "static/js/2.e9af1683.chunk.js": "/static/js/2.e9af1683.chunk.js",
+    "static/js/2.e9af1683.chunk.js.map": "/static/js/2.e9af1683.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.1a02f21c.chunk.css.map": "/static/css/2.1a02f21c.chunk.css.map",
+    "static/css/main.fb02f134.chunk.css.map": "/static/css/main.fb02f134.chunk.css.map",
+    "static/js/2.e9af1683.chunk.js.LICENSE.txt": "/static/js/2.e9af1683.chunk.js.LICENSE.txt",
+    "static/media/styles.css": "/static/media/Metropolis-Regular.67a1988d.otf",
+    "static/media/baju1.9fca09b2.jpg": "/static/media/baju1.9fca09b2.jpg",
+    "static/media/baju2.48f918ba.jpg": "/static/media/baju2.48f918ba.jpg",
+    "static/media/baju3.429b5e06.jpg": "/static/media/baju3.429b5e06.jpg",
+    "static/media/fg.663961e5.jpg": "/static/media/fg.663961e5.jpg",
+    "static/media/jacket.68eee75b.png": "/static/media/jacket.68eee75b.png",
+    "static/media/jazz.c0d043a7.png": "/static/media/jazz.c0d043a7.png",
+    "static/media/pants.df806b83.png": "/static/media/pants.df806b83.png",
+    "static/media/shoes.53f6587c.png": "/static/media/shoes.53f6587c.png",
+    "static/media/short.1edfadb6.png": "/static/media/short.1edfadb6.png",
+    "static/media/tshirt.5cca3f32.png": "/static/media/tshirt.5cca3f32.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f41d41e9.js",
+    "static/css/2.1a02f21c.chunk.css",
+    "static/js/2.e9af1683.chunk.js",
+    "static/css/main.fb02f134.chunk.css",
+    "static/js/main.fe1e5602.chunk.js"
+  ]
+}

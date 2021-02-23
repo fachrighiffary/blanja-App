@@ -5,16 +5,25 @@ import { Logo } from '../../assets';
 import "./login.css";
 import axios from 'axios'
 import { Link, Redirect } from 'react-router-dom';
+import {setLoginTrue} from '../../redux/actionCreators/Auth'
 
 
-const baseUrl = 'http://localhost:8000/auth/login'
+const baseUrl = process.env.REACT_APP_BASEURL + '/auth/login'
 
 class Login extends Component {
-
-    state={
-        email: '',
-        password: '',
-        isLogin: false,
+    constructor(){
+        super();
+        this.state = {
+            email: '',
+            password: '',
+            isLogin: false,
+            level_id : '',
+            backgroundCus: 'white',
+            txtCus: 'black',
+            backgroundSel: 'white',
+            txtSel: 'black',
+            errMsg: ''
+        }
     }
 
     handlerChange = (e) => {
@@ -24,25 +33,50 @@ class Login extends Component {
     handlerSubmit = (event) => {
         const { dispatch, auth } = this.props;
         event.preventDefault()
-        axios.post(baseUrl, this.state)
-        .then((res) => {
-            localStorage.setItem("user_id", res.data.data.id)
-            localStorage.setItem("username", res.data.data.username)
-            localStorage.setItem("level", res.data.data.level)
-            localStorage.setItem("token", res.data.data.token)
-            res.headers["x-access-token"] = res.data.data.token;
-            localStorage.setItem("isLogin",1)
-            dispatch({type: 'LOGIN'})
-            console.log(res.headers)
-            console.log(localStorage)
-        })
-        .catch((err) => {
-            console.log(err)
-        })
+        const data = {
+            email: this.state.email,
+            password: this.state.password,
+            level_id : this.state.level_id
+        }
+        if(data.level_id ===  ''){
+            this.setState({
+                errMsg: 'Pilih Role terlebih dahulu'
+            })
+        }else{
+            axios.post( process.env.REACT_APP_BASEURL + '/auth/login' , data)
+            .then((res) => {
+                console.log(res)
+                localStorage.setItem("user_id", res.data.data.id)
+                localStorage.setItem("email", res.data.data.email)
+                localStorage.setItem("username", res.data.data.username)
+                localStorage.setItem("level_id", res.data.data.level)
+                localStorage.setItem("token", res.data.data.token)
+                localStorage.setItem("isLogin", true)
+                const dataLogin = {
+                    email       : res.data.data.email,
+                    name        : res.data.data.username,
+                    level       : res.data.data.level,
+                    id          : res.data.data.id,
+                    store_name  : res.data.data.token,
+                    token       : res.data.data.token
+                }
+                this.props.dispatch(setLoginTrue(dataLogin))
+                console.log(res.headers)
+                console.log(localStorage)
+            })
+            .catch((err) => {
+                console.log(err)
+                this.setState({ 
+                    errMsg: 'Password Salah'
+                })
+            })
+        }
+
     }
 
     render() {
         const { auth } = this.props;
+        const {backgroundCus, txtCus, backgroundSel, txtSel, level_id, errMsg} = this.state
         return (
             <Container className="auth">
                  {auth.isLogin  && <Redirect to="/" />}
@@ -53,8 +87,32 @@ class Login extends Component {
                     </div>
                     <p className="info">Please login with your account</p>
                     <div className="button-group">
-                        <Link className="button button-full">Customer</Link>
-                        <Link className="button button-shadow">Seller</Link>
+                        <button 
+                        className="button button-full" 
+                        style={{backgroundColor: backgroundCus, color: txtCus}}
+                        onClick={() => {
+                            this.setState({
+                                backgroundCus: '#DB3022',
+                                txtCus: 'white',
+                                backgroundSel: 'white',
+                                txtSel: 'black',
+                                level_id: 2
+                            })
+                        }}
+                        >Customer</button>
+                        <button 
+                        className="button button-shadow"  
+                        style={{backgroundColor: backgroundSel, color: txtSel}}
+                        onClick={() => {
+                            this.setState({
+                                backgroundCus: 'white',
+                                txtCus: 'black',
+                                backgroundSel: '#DB3022',
+                                txtSel: 'white',
+                                level_id: 1
+                            })
+                        }}
+                        >Seller</button>
                     </div>
                     <form className="form-section" onSubmit={this.handlerSubmit}>
                         <div className="form-main">
@@ -63,10 +121,11 @@ class Login extends Component {
                         <div className="form-main">
                             <input type="password" placeholder="Password" name="password"  onChange={this.handlerChange} required/>
                         </div>
+                        <p style={{color: 'red', marginTop: 20}}>{errMsg}</p>
                         <a className="forgot" href="reset">Forgot password?</a><br></br>
-                        <Button className="submit" type="submit">
+                        <button className="submit" type="submit" >
                             LOGIN
-                        </Button>
+                        </button>
                     </form>
                     <p className="register">Don't have a Tokopedia account? <a href="register">Register</a></p>
                 </div>

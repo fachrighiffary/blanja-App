@@ -36,20 +36,22 @@
   }
   
   .button-shadow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-decoration: none;
-    background: #DB3022;
     box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.05);
     border-radius: 0px 4px 4px 0px;
-    color: white;
   }
   
   .button-full {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-decoration: none;
-    border: 1px solid #9B9B9B;
     box-sizing: border-box;
     filter: drop-shadow(0px 1px 8px rgba(0, 0, 0, 0.05));
     border-radius: 4px 0px 0px 4px;
-    color: gray;
   }
   
   .form-section {
@@ -94,7 +96,16 @@
     background: #DB3022;
     border-radius: 25px;
     text-decoration: none;
+    border: none;
   }
+  
+  .submit:hover {
+    background-color: red;
+    color: black;
+    border: none;
+    outline: none
+  }
+ 
   
   .register {
     margin-top: 40px;

@@ -21,7 +21,7 @@ class Detail extends Component {
             },
           };
         Axios
-        .get(getURL + match.params.id, config )
+        .get(process.env.REACT_APP_BASEURL + '/product/' + match.params.id, config )
         .then(({data}) => {
             this.setState({
                 product: data
